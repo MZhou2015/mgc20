@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gecon Admin 2020 Beta</title>
+<style type="text/css">
+<!--
+-->
+</style>
+<link href="./src/mgc20.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id ="#wapper"> 	
+<div id="banner"><img src="./assets/store_logo.png" width="200" height="50" alt="Company Logo" />
+  Gecon Technology Ltd.
+</div> <!---      EOF banner     -->
+<div id="app">
+<component :is="currentView"></component>
+<router-view  :stock="a" :bacd = "ab" :prod="jsdd" :cab="amp"> </router-view>
+</div><!---      EOF div #app      -->    
+ <div style="clear:both "></div>
+<div id="footer">
+<p style="padding: 10px ; color: #ffffff; background-color: #8c7968"> Gecon Technology Ltd. &nbsp;&nbsp; Copyright &copy; 2020  &nbsp;&nbsp;All Rights Reserved </p> </div>
+</div><!-- End of Wrapper    -->
+<!--          **********************************************************************************************   -->
+<script src="./assets/lib/vue.js"></script> <!--- // link a Vue package  -->
+<script src="./assets/lib/axios.min.js "></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="./src/components/author.js"></script>
+<script src="./src/components/gc_account.js"></script>
+<script src="./src/components/gc_portfolio.js"></script>
+<script src="./src/components/product.js"></script>
+<script src="./src/components/navigate.js"></script>
+<script src="./src/components/app.js"></script>
+</body>
+</html>
