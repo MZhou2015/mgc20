@@ -13,7 +13,7 @@ print"<html><body>";
 ## my $dbh = DBI->connect('localhost','gecontec','532_47BH5618.zm','gecontec_gs');
 ## $dbh->disconnect;
 my $dbh = DBI->connect("DBI:mysql:gecontec_gs:localhost",'gecontec','532_47BH5618.zm');
-my $query  = "SELECT close FROM stk_price_tock WHERE symbol = 'AAPL' and date =  '2020-03-04'   ";
+my $query  = "SELECT close FROM stk_price_tock WHERE symbol = 'AAPL' and date =  '2020-03-04' ";
 print " $query <br>" ;
 my $sth = $dbh->prepare($query);
 $sth->execute();
@@ -27,31 +27,42 @@ my $time = gtimestamp($fdate) ;
 my $now_string = localtime; 
     
 my $ttx  =  date_iso($now_string) ;
-my $time1 = gtimestamp($ttx) ;   
-my @symbol =('MFC.TO','BCE.TO','HBM.TO','ENB','SQ','DAL','WFC','MCD','DIA','XDV.TO','CCL','UBER','AAPL','TPR','IRBT','PPL.TO','BA','AB','FB','BMO');
-my $site = "https://query1.finance.yahoo.com/v7/finance/download/";
-
-my $sitend = "&interval=1d&events=history";
-my @symbol =('MFC.TO','HBM.TO','FB','BMO','SPXS') ;
-     ## $time  = 1559071077;## $time1 = 1590693477;
-
- foreach my $stk (@symbol) {
-    $url = $site.$stk."?period1=".$time."&period2=".$time1.$sitend ;
-    $content=webquery::getpage("$url");
+my $time1 = gtimestamp($ttx) ;  
+##########################################
+my $paar;
+my $ik = 0 ;
+my $filename = '../jsn.json';
+open(FH, '>', $filename) ;
+print("File $filename opened successfully!\n");
+print FH "[\n" ;
+my $qq  = "SELECT * FROM gs_product WHERE remark > 100 order  by remark desc";
+ ## print " $key  =>  $dd <br>" ;
+my $cc ; 
+my %sym2;
+my $i = 0;
+my %curr ;
+my  $sth = $dbh->prepare($qq);
+    $sth->execute();
+   
+   while (my $result = $sth->fetchrow_hashref()) {
+          my $act = $result->{ptcode} ;
+      
+       print $result->{remark} ;
+       print FH '{"ptcode":' ;
+       print FH $result->{remark} ;
+       print FH ',"ramark":' ;
+       print FH $act ;
+       print FH "},\n" ;
      
-########################################################################3
-while( $content =~/(\d\d\d\d-\d\d.*?),(.*?),(.*?),(.*?),(.*?),.*?     #1                                          /xsg)
-  { 
-print "$1 xx $2 YY $3 ZZ $4 WW $5 \n </br>" ;
- $query  = "INSERT INTO stk_price_tock (symbol,date,open,high,low,close) VALUES ('$stk','$1',$2,$3,$4,$5) ";
- print "$query <br>" ;
- ## $sth = $dbh->prepare($query);
- my $c = $dbh->do( $query) ;
- ## $sth->execute();
-
-}
+       $ik++ ;
+       }
+############################################################################# 
+## my $jssn = encode_json $paar ;
+## print $js ;
 #####################################
-   }
+
+print FH "\n]" ;
+close(FH);
 # Disconnect from the database.
 $dbh->disconnect();   
 print '</body>
