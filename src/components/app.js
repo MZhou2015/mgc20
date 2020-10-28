@@ -10,22 +10,22 @@ var routerObj = new VueRouter({
                 children:[
                   {path:'atransb', component: atransb },
                          ]
-           
        },
-       { path:'/abalance' ,  component:abalance     },
-       { path:'/income' ,    component:income       },
-       { path:'/ledger' ,     component:ledger      }, 
+       { path:'/abalance' ,   component:abalance     },
+       { path:'/income' ,     component:income       },
+       { path:'/ledger' ,     component:ledger       }, 
        { path:'/ledger/:pid', component:ledger  ,   
               children:[
                   {path:'atransa', component: atransa },
                         ]
        },
-       { path:'/termdeposit' ,    component:termdeposit },
-       { path:'/products' ,    component:product    },
-       { path:'/preOrder' ,    component:preOrder   },
-        { path:'/proEdit' ,    component:proEdit    },
-       { path:'/proDuct' ,    component:proDuct    },
-       { path:'/proDuct/:pid', component:proDuct   }
+       { path:'/termdeposit' ,  component:termdeposit },
+       { path:'/products' ,     component:product    },
+       { path:'/preOrder' ,     component:preOrder   },
+       { path:'/proEdit' ,      component:proEdit    },
+       { path:'/proEdit/:pid' , component:proEdit    },
+       { path:'/proDuct' ,      component:proDuct    },
+       { path:'/proDuct/:pid',  component:proDuct    }
       
        ]
     }) 

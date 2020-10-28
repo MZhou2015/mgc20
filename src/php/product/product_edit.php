@@ -4,7 +4,7 @@ require('../docs/fn_php_2020march.php');
   $db = db_connect();
 /****************************************/
 $act = "main" ;
-if(isset($_GET['act'])) $acc  = $_GET['act']  ;
+if(isset($_GET['act'])) $act = $_GET['act']  ;
 if($act == "POST") {
     $_POST = json_decode(file_get_contents('php://input'), true);
     foreach ($_POST as $val) {
@@ -17,7 +17,11 @@ switch ($act) {
       echo "This is your Main stuff!";
       break;
     case "list":
-      echo "Your list Here!";
+      $tbn = "gs_product" ;
+      $fl0 = "remark" ;
+      $code =  112 ;
+      $data1 = onetoall_db($tbn,$db,$fl0,$code ) ;       // Fuction one index for all @ line 22 fn_php2020march .php 
+      $res['list'] = $data1 ;
       break;
     case "green":
       echo "Your favorite color is green!";
