@@ -27,7 +27,7 @@ switch ($act) {
       echo "Your favorite color is green!";
       break;
     default:
-      echo "Your favorite color is neither red, blue, nor green!";
+    $res['feedback'] = " Nothing Happen here" ; 
   }
   $res['action'] = $act; 
   header("content-type: application/json");
