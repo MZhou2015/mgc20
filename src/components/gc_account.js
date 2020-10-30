@@ -36,16 +36,10 @@ var  Account = Vue.component('Account' ,
 <!--       *************         Div  class  of acc22       *****************************************************      -->      
         <div class="acc22"> 
             <div class="acc01">
-                 <label >Start Date:  &nbsp;&nbsp;    </label>  <input type="date" class="form1" v-model="dts">&nbsp;&nbsp;&nbsp;&nbsp;
-                 <label >End   Date:  &nbsp;&nbsp;    </label>  <input type="date" class="form1" v-model="dte"> <br><br>
-                 <button  class="btn_pt2" v-on:click="laoddate()">Data Preset</button> <br>
-              </div>
-            <div class="acc02">  
-                 <router-link to="accInvoice/1" class="btn_pt2">Invoice 1 </router-link><br>  <br>
-                 <button v-on:click="testread()">Test Clcick</button>&nbsp;&nbsp;
-                 <button class="btncls" v-on:click="testread()">Test PHP </button><br>
-                 <button class="btncls" v-on:click="testread()">Clcick PHP </button>&nbsp;&nbsp; <button v-on:click="testread()">Clcick Test </button>
-                 </div>
+                 <label >Start Date:  &nbsp;&nbsp;</label> <input type="date" class="form1" v-model="dts">&nbsp;&nbsp;&nbsp;&nbsp;
+                 <label >End   Date:  &nbsp;&nbsp;</label> <input type="date" class="form1" v-model="dte">
+                 <span><button class="btn_pt2" v-on:click="laoddate()">Data Preset</button></span>
+              </div>           
         </div>
                 <table class="account">
                  <tr><th>Item</th><th>Date</th><th>Trans No.</th><th>referance</th><th>acc_no</th><th>Debit</th><th>Credit</th><th>cid</th><th>Comment</th></tr>
