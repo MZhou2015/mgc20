@@ -1,4 +1,4 @@
- <?php
+<?php
 /**************************************************************************************/ 
 /********                  Function for all appliation                            *****/ 
 /********                  V2.05.1       Mar. 8  2020    Michael                  *****/ 
@@ -30,7 +30,15 @@ function onetoall_db($tbn,$db,$fl0,$code )        // Fuction one item for all tr
                         } ; 
   return $mtab;   
 }
-/*********/
+/******************************************************************************************************/ 
+/********                  Function for all appliation  II                                        *****/ 
+/********                  V2.05.02      Oct. 31         2020    Michael                          *****/ 
+/******************************************************************************************************/
+function update_onerow($tbn,$fln,$val,$fn0,$code,$db) {               // Fuction Update  for    a flied in one row  
+    $sql = "UPDATE $tbn SET $fln ='$val' WHERE $fn0 = '$code' ";
+    $r = $db->query($sql);
+}
+/******************************************************************/
 function one_sort_no($tbn,$db,$scol,$fln) // Fuction 103   
 { 
     $query= "SELECT $fln FROM $tbn order by $scol asc ";
