@@ -12,7 +12,7 @@ print"Content-type:text\html \n\n";
 print"<html><body>";
 ## my $dbh = DBI->connect('localhost','gecontec','532_47BH5618.zm','gecontec_gs');
 ## $dbh->disconnect;
-my $dbh = DBI->connect("DBI:mysql:gecontec_gs:localhost",'gecontec','532_47BH5618.zm');
+my $dbh = DBI->connect("DBI:mysql:gecontec_gs:localhost",'username','532_password');
 my $query  = "SELECT close FROM stk_price_tock WHERE symbol = 'AAPL' and date =  '2020-03-04' ";
 print " $query <br>" ;
 my $sth = $dbh->prepare($query);

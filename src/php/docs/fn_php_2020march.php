@@ -4,7 +4,7 @@
 /********                  V2.05.1       Mar. 8  2020    Michael                  *****/ 
 /**************************************************************************************/ 
 function db_connect() {
-		$db = new mysqli('localhost','gecontec','532_47BH5618.zm','gecontec_gs') or die ("$connection Couldn't connect to server.");
+		$db = new mysqli('localhost','username','password','db_name') or die ("$connection Couldn't connect to server.");
   				if(mysqli_connect_errno())
        				{
            				die("$dbn Connection could not be established");       }
