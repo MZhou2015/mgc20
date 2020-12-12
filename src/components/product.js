@@ -146,4 +146,78 @@ var  preOrder = Vue.component('preOrder' ,
   }
   
  })
+/******************************************************************************************/
+/****      Component  for Product List  December 11 , 2020     by Michael zhou        *****/
+/******************************************************************************************/
+var  prolist = Vue.component('prolist' , 
+{ 
+  props: ['bacd','cab','prod'] ,
+   template:  ` <div class="product" >
+         <div>
+          <div class="tbtt2">Product List </div>
+          <ul class="nav nav-tabs">
+          
+             <li class="nav-item">
+             <a class="nav-link active" href="#invoice" data-toggle="tab">Invoice</a>
+              </li>
+              <li class="nav-item">
+             <a class="nav-link" href="#16" data-toggle="tab">ERE</a>
+              </li>
+            <li class="nav-item" v-for="(item, index ) in bacd">
+            <a class="nav-link" :href="'#' + item.ccd" data-toggle="tab"> {{item.cat_id}} &nbsp; {{item.cat_name}}</a> </li>
+            </ul>
+          <div class="tab-content" id="myTabContent">
+           <div class="tab-pane fade show active" id="invoice" >
+          invoice           
+           </div>
+           <div class="tab-pane fade" id="16" >
+          e23 ere    
+           </div> 
+           <div class="tab-pane fade" id="2" >
+          e23     
+           </div> 
+             <div class="tab-pane fade" v-for="(item, index ) in bacd"  :id="item.ccd">
+             <div v-for="(val, index ) in item.subcd">
+                   {{val}}
+               </div>
+              {{index}} {{item.ccd}}
+               </div>
+          </div>  <!-- div id = myTabContent  -->
+      <table class="tgc1">
+      <tr><th>Item</th><th>PTcode</th><th>Model </th><th>季（90天）平均销量</th><th>库存数量</th><th>已订</th><th>需订量</th></tr>
+      <tr><th>12</th><td>Model124</td><td>Model124</td><td>Model124</td><td>Model65</td></tr>
+      <tr><th> 13</th><td>Model124</td><td>Model124</td><td>Model124</td><td>Model65</td></tr>
+      <tr><th>15</th><td>Model124</td><td>Model124</td><td>Model124</td><td>Model65</td></tr>
+      <tr><th> 13</th><td>Model124</td><td>Model124</td><td>Model124</td><td>Model65</td></tr>
+      <tr><th>15</th><td>Model124</td><td>Model124</td><td>Model124</td><td>Model65</td></tr>
+      </table></div>
+       <div class="t96" v-for="(item, index ) in bacd"  :id="index">
+              {{index}} <br> xc
+               </div>
+      
+    </div> `  ,
+  data() {
+   	return {  
+        checked: false,
+        records:'re',
+        ptcode:''
+           }
+   },
+   mounted: function(){
+      let mx = "files" 
+      this.getlist(mx)
+  } ,
+  methods:{
+    getlist: function (po){
+      let url = './src/php/product/prolist.php?act=prolist'
+      console.log(url) ;
+      axios.get(url).then(function(response){
+       app.jsdd = response.data ;
+       app.ab   = response.data.cate ;
+       app.amp  = response.data.transfer ;
+       console.log(app.ab) ;
+                 }) .catch(function(error){ console.log(error) ; }) ;
+         } 
+  } 
+})
  /******************************************************************************************/

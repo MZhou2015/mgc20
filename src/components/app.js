@@ -11,9 +11,10 @@ var routerObj = new VueRouter({
                   {path:'atransb', component: atransb },
                          ]
        },
-       { path:'/abalance' ,   component:abalance     },
-       { path:'/income' ,     component:income       },
-       { path:'/ledger' ,     component:ledger       }, 
+       { path:'/compacc',     component:compacc   },
+       { path:'/abalance',    component:abalance  },
+       { path:'/income',      component:income    },
+       { path:'/ledger',      component:ledger    }, 
        { path:'/ledger/:pid', component:ledger  ,   
               children:[
                   {path:'atransa', component: atransa },
@@ -21,6 +22,7 @@ var routerObj = new VueRouter({
        },
        { path:'/termdeposit' ,  component:termdeposit },
        { path:'/products' ,     component:product    },
+       { path:'/prolist' ,      component:prolist    },
        { path:'/preOrder' ,     component:preOrder   },
        { path:'/proEdit' ,      component:proEdit    },
        { path:'/proEdit/:pid' , component:proEdit    },

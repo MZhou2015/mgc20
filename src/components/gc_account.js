@@ -28,32 +28,59 @@ var  Account = Vue.component('Account' ,
                   <tr><td>Account</td><td>Debit</td><td>Credit</td><td>Comment</td></tr>
                   <tr v-for="(Value, index) in ldn" ><td>{{Value.accName}}</td><td>  <input type="text" v-model="Value.Debit" > </td><td> <input type="text" v-model="Value.Credit" >
                     </td><td><input type="text" v-model="Value.Commnet" ></td></tr>
-                  <tr><td> &nbsp;&nbsp;</td><td><button class="btn_pt" v-on:click="btnUpdate('M')">Update</button> </td><td> &nbsp;&nbsp;</td><td><button class="btn_pt" v-on:click="btnSBM('My Words is here !')">Submit</button> </td></tr>
+                  <tr><td> &nbsp;&nbsp;</td><td><button class="btn btn-primary" v-on:click="btnUpdate('M')">Update</button> </td><td> &nbsp;&nbsp;</td><td><button class="btn btn-primary" v-on:click="btnSBM('submit trans')">Submit</button> </td></tr>
               </table> 
-    <table class="account">
-          <tr v-for= "(item, index ) in b.key "><td v-for= "val  in item"> {{val}}</td><td> &nbsp; {{index}} <button v-on:click="btnClick2(index)">Select</button></td></tr>
-        </table>
-<!--       *************         Div  class  of acc22       *****************************************************      -->      
-        <div class="acc22"> 
-            <div class="acc01">
+   
+<!--       *************         Div  class  of acc20       *****************************************************      -->      
+<div class="acc20">        
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+     <a class="nav-link active" href="#invoice" data-toggle="tab">Invoice</a>
+    </li>
+    <li class="nav-item">
+     <a class="nav-link" href="#dataset" data-toggle="tab">Data SET</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ledger" data-toggle="tab">Ledger</a>
+    </li>
+   <li class="nav-item">
+    <a class="nav-link" href="#tdacc" data-toggle="tab" >TD Acc</a>
+   </li>
+ </ul>
+ <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="invoice" >
+     <table class="account">
+                <caption>Purchase Invoice for Gecon </caption>
+                <thead>
+                <tr><th>Item</th><th>Date</th><th>Invoice No.</th><th>Type</th><th>Amount</th><th>Customer</th><th>Select</th></tr></thead>
+                <tbody>
+                 <tr v-for= "(item, index ) in prod.order "><td>{{index+1 }}</td><td>{{item[0]}}</td><td>{{item[2]}}</td><td>{{item[3]}}</td>
+                                 <td>{{item[4]}}</td><td>{{item[5]}}</td> <td> &nbsp;<button class="btn btn-outline-secondary btn-sm" v-on:click="btnClick3(index)">Select</button></td></tr>
+                    </tbody>             
+                 </table>
+  
+    </div>
+    <div class="tab-pane fade" id="dataset">
+    <div class="acc01">
                  <label >Start Date:  &nbsp;&nbsp;</label> <input type="date" class="form1" v-model="dts">&nbsp;&nbsp;&nbsp;&nbsp;
                  <label >End   Date:  &nbsp;&nbsp;</label> <input type="date" class="form1" v-model="dte">
                  <span><button class="btn_pt2" v-on:click="laoddate()">Data Preset</button></span>
-              </div>           
-        </div>
-                <table class="account">
+              </div>         
+    </div>
+  <div class="tab-pane fade" id="ledger">
+   <table class="account">
                  <tr><th>Item</th><th>Date</th><th>Trans No.</th><th>referance</th><th>acc_no</th><th>Debit</th><th>Credit</th><th>cid</th><th>Comment</th></tr>
                  <tr v-for= "(trn, index ) in cab.allledg "><td>{{index+1}}</td><td>{{trn.date}}</td><td>{{trn.trans_no}}</td><td>{{trn.referance}}</td><td>{{trn.acc_no}}</td><td>{{trn.debit}}</td><td>{{trn.credit}}</td>
                         <td>{{trn.cid}}</td><td>{{trn.comment}}</td></tr>
                  </table>
-               <table class="account">
-                <caption>Purchase Invoice for Gecon </caption>
-                <tr><th>Item</th><th>Date</th><th>Invoice No.</th><th>Type</th><th>Amount</th><th>Customer</th><th>Select</th></tr>
-                 <tr v-for= "(item, index ) in prod.order "><td>{{index+1 }}</td><td>{{item[0]}}</td><td>{{item[2]}}</td><td>{{item[3]}}</td>
-                                 <td>{{item[4]}}</td><td>{{item[5]}}</td> <td> &nbsp;<button v-on:click="btnClick3(index)">Select</button></td></tr>
-                 </table>
-
-      </div>  `  ,
+   </div>
+  <div class="tab-pane fade"id="tdacc">
+     <table class="account">
+          <tr v-for= "(item, index ) in b.key "><td v-for= "val  in item"> {{val}}</td><td> &nbsp; {{index}} <button class="btn btn-outline-secondary btn-sm" v-on:click="btnClick2(index)">Select</button></td></tr>
+        </table>
+    </div></div>
+</div><!-- end of ac 20   -->
+         </div>  `  ,
   
 	data() {
     	return {  
@@ -94,15 +121,14 @@ var  Account = Vue.component('Account' ,
                            }) .catch(function(error){ console.log(error) ;  }) ;
         // console.log( this.ledger22) ;
           axios.get('http://www.gecontech.com/magento/mgc20/src/php/api_db_2020.php?action=alltrans').then(function(response){
-                      app.amp = response.data ;       console.log(app.amp) ;  }) .catch(function(error){ console.log(error) ;  }) ;
+                      app.amp = response.data ; }) .catch(function(error){ console.log(error) ;  }) ;
         },
   methods:{
     get_trNo: function() {
          let records  = JSON.parse(localStorage.getItem('wacc_trans_item')) ;
            let n = records.rows.length ;
           //  this.tno =  Number(records.rows[n-1].trans_no)  +1; 
-            this.tno =  this.prod.transs
-             console.log(this.tno) ;
+            this.tno =  this.prod.transs ;
     } ,
     allRecords: function (){
       axios.get('http://www.gecontech.com/magento/mgc20/src/php/file_rw.php').then(function(response){
@@ -127,8 +153,6 @@ var  Account = Vue.component('Account' ,
     onChange:function() {
               let  result = this.ledger22.rows.find( ({ acc_no }) => acc_no === this.cno );
               let mv = {};
-               console.log(this.cno) ;
-               console.log(result) ;
               mv.acc   = result.acc_no;
               mv.accName   = result.acc_name;
                 var cc   = 0;
@@ -136,11 +160,10 @@ var  Account = Vue.component('Account' ,
                 var d =  0;
                let n = this.ldn.length ;
                 if( n > 0) {
-                 
                     for (var i = 0; i < n ; i++ ) {
                       cc += Number(this.ldn[i].Credit) ;
                       dc += Number(this.ldn[i].Debit);
-                    };
+                    }
                     d = dc + cc ;
                             if (dc > cc) {
                                       mv.Debit  = 0;
@@ -227,7 +250,8 @@ var  Account = Vue.component('Account' ,
                                     });
             this.tm = false ; 
             this.stat1 = "New Transation completed !" ;
-            console.log(mn) ;
+            console.log(this.stat1) ;
+            this.trans =[] ;
     },
     btnUpdate:function(){
             this.tm = true ; 
@@ -236,8 +260,9 @@ var  Account = Vue.component('Account' ,
            let midvar = {} ;
             midvar.No     = this.tno ;
             midvar.date   = this.dt0; 
-            midvar.Debit  = "6855484"; 
-            midvar.Credit = "5355484";
+            midvar.Debit  = "65.32"; 
+            midvar.Credit = "78.96";
+            midvar.Comment = "test message";
             this.trans.push(midvar);
          console.log(this.tno) ;
            let n = this.ldn.length ;
@@ -267,13 +292,15 @@ var  Account = Vue.component('Account' ,
  { 
   props: ['bacd'] ,
   template:  ` <div class="fd1" >
-    {{checked}}
-      <table  class="account" >
-                        <caption>Balance Sheet  <br> {{ dt_e}}</caption>
-              <tr><th> {{bacd.ase}} </th></tr>
+                 <div class ="tbtt">Balance Sheet  <br> {{ dt_e}}</div>
+                  <div class="fd122">
+                  <div class="tbbg">
+                  <div class ="tbtt" > Balance Sheet  <br> {{ dt_e}}</div>
+                  <table  class="account" >
+                  <tr><th colspan="5"> {{bacd.ase}} </th></tr>
                 <tr v-for= "(trn, index ) in bacd.bal "><td>{{index+1 }}</td><td><router-link :to="trn.link"  >{{trn.acc_no}} </router-link></td><td>{{trn.acc_name}}</td><td>{{trn.date}}</td><td>{{trn.acc_sum}}</td></tr>
                 <tr><th></th><th></th><th>Total in  {{bacd.ase}} :</th><th>&nbsp;&nbsp; </th><th> {{bacd.assatTotal}} </th></tr>
-              <tr><th> {{bacd.lbname}} </th></tr>
+              <tr><th colspan="5" > {{bacd.lbname}} </th></tr>
                 <tr v-for= "(trn, index ) in bacd.liab"><td>{{index+1}}</td><td><router-link :to="trn.link"  >{{trn.acc_no}} </router-link></td><td>{{trn.acc_name}}</td><td>{{trn.date}}</td><td>{{trn.acc_sum}}</td></tr>
                 <tr><th></th><th></th><th>Total in  {{bacd.lbname}} :</th><th>&nbsp;&nbsp; </th><th> {{bacd.liabTotal}} </th></tr>
                 <tr><th> {{bacd.Equity}} </th></tr>
@@ -281,8 +308,8 @@ var  Account = Vue.component('Account' ,
                 <tr><th></th><th></th><th>Total in  {{bacd.Equity}} :</th><th>&nbsp;&nbsp; </th><th> {{bacd.EqyTotal}} </th></tr>
                 <tr><th colspan="2" ></th><th></th><th> &nbsp;&nbsp;</th><th>  &nbsp;&nbsp; </th></tr>
                   <tr><th colspan="2" ></th> <th>Net Liabilities and Equity :</th><th>&nbsp;&nbsp; </th><th>{{bacd.equliab}} </th></tr>
-
-             </table>           
+             </table> </div>
+          </div>
      </div> `  ,
   data() {
       return {  
@@ -310,10 +337,9 @@ var  income = Vue.component('income' ,
  { 
   props: ['prod'] ,
   template:  ` <div class="fd1" >
-
              <h2> Income Statement  </h2>
-            {{checked}}
-        <table  class="account" >
+             <div class="fd122">
+            <table  class="account" >
                          <caption>Profit & Loss  <br> From  {{dt_s}} to {{dt_e}}</caption>
                 <tr><th> {{prod.sort}} </th></tr>
                 <tr v-for= "(trn, index ) in prod.inc"><td>{{index}}</td><td><router-link :to="trn.link"  >{{trn.acc_no}} </router-link></td><td>{{trn.acc_name}}</td><td>{{trn.date}}</td><td>{{trn.acc_sum}}</td></tr>
@@ -324,7 +350,7 @@ var  income = Vue.component('income' ,
                  <tr><th colspan="2" ></th><th></th><th> &nbsp;&nbsp;</th><th>  &nbsp;&nbsp; </th></tr>
                   <tr><th colspan="2" ></th> <th>Net Income</th><th>&nbsp;&nbsp; </th><th> {{prod.net}} </th></tr>
         </table>
-      
+        </div>
           </div> `  ,
   data() {
       return {  
@@ -455,5 +481,43 @@ mounted: function(){
       
      }
 
-}) 
+})
+/*****************************************************************************************************************/
+/***                                    Component compacc  for manage testing   Oct  2020     Michael Zhou     ***/
+/*****************************************************************************************************************/
+var  compacc  = Vue.component('compacc' , 
+ { 
+  props: ['bacd','prod'],
+  template: `<div class="fd120"> 
+        <h5><router-link to="/compacc"><i class="fas fa-home">&nbsp;&nbsp;Home</i></router-link> </h5>
+        <div class="fd122">
+        <div class="tbbg">
+            <div class ="tbtt">This is Title of Table</div>
+        <table class="gstb">
+        <tr><th>fga1</th><th>fga2</th><th>fga3</th></tr>
+        <tr><td>bb1</td><td>bb2</td><td>bb3</td></tr>
+        <tr><td>cc1</td><td>cc2</td><td>cc3</td></tr>
+        <tr><td>a1</td><td>a2</td><td>a3</td></tr>
+        <tr><td>bb1</td><td>bb2</td><td>bb3</td></tr>
+        <tr><td>cc1</td><td>cc2</td><td>cc3</td></tr>
+        </table>
+        </div> <!-- div tbbg  -->
+        </div>
+        Hello world !
+        </div> ` ,
+  data() {
+      return {  
+              tm:  false,
+              tno:123,
+              acclink:'',
+              data:'',
+              dt_s:'',
+              dt_e:'',
+              b: 54 
+                }
+   },
+  mounted: function(){
+      console.log("test compacc")
+  }
+})
 /****************************************************************************************************************/
