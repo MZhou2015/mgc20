@@ -523,7 +523,7 @@ var  compacc  = Vue.component('compacc' ,
 /*****************************************************************************************************************/
 /***                                    Component compacc  for manage testing   Oct  2020     Michael Zhou     ***/
 /*****************************************************************************************************************/
-var  compacc  = Vue.component('viewIp' , 
+var  viewIp  = Vue.component('viewIp' , 
  { 
   props: ['bacd','prod'],
   template: `<div class="fd120"> 
