@@ -520,4 +520,42 @@ var  compacc  = Vue.component('compacc' ,
       console.log("test compacc")
   }
 })
+/*****************************************************************************************************************/
+/***                                    Component compacc  for manage testing   Oct  2020     Michael Zhou     ***/
+/*****************************************************************************************************************/
+var  compacc  = Vue.component('viewIp' , 
+ { 
+  props: ['bacd','prod'],
+  template: `<div class="fd120"> 
+        <h5><router-link to="/compacc"><i class="fas fa-home">&nbsp;&nbsp;Home</i></router-link> </h5>
+        <div class="fd122">
+        <div class="tbbg">
+            <div class ="tbtt">This is Title of Table View IP </div>
+        <table class="gstb">
+        <tr><th>fga1</th><th>fga2</th><th>fga3</th></tr>
+        <tr><td>bb1</td><td>bb2</td><td>bb3</td></tr>
+        <tr><td>cc1</td><td>cc2</td><td>cc3</td></tr>
+        <tr><td>a1</td><td>a2</td><td>a3</td></tr>
+        <tr><td>bb1</td><td>bb2</td><td>bb3</td></tr>
+        <tr><td>cc1</td><td>cc2</td><td>cc3</td></tr>
+        </table>
+        </div> <!-- div tbbg  -->
+        </div>
+        Hello world !
+        </div> ` ,
+  data() {
+      return {  
+              tm:  false,
+              tno:123,
+              acclink:'',
+              data:'',
+              dt_s:'',
+              dt_e:'',
+              b: 54 
+                }
+   },
+  mounted: function(){
+      console.log("test View Ip")
+  }
+})
 /****************************************************************************************************************/

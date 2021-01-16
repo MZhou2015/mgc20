@@ -17,7 +17,7 @@ Vue.component('gnav-bar', {
                                                                 {name:'Proinfo Edit', url:'#/proEdit'} ]} ,
                       { title:'GoPHP', ul:'./src/php/getPrice.php', sub:[{name:'Price Update PERL', url:'./src/perl/two.pl'} ,
                                                                          {name:'Get JSON file', url:'./src/perl/getprojson.pl'} ,
-                                                                         {name:'link 4', url:'#/accInvoice/2'}]} ,
+                                                                         {name:'View IPlist', url:'#/viewIP'}]} ,
                       { title:'Portfolio', ul:'#/portfolio', sub:[{name:'Portfolio Total', url:'#/portfo'} ,
                                                                   {name:'Portfolio Zhou',  url:'#/portfo/1'} ,
                                                                   {name:'Portfolio Fan',   url:'#/portfo/2'} ,

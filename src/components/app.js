@@ -24,6 +24,7 @@ var routerObj = new VueRouter({
        { path:'/products' ,     component:product    },
        { path:'/prolist' ,      component:prolist    },
        { path:'/preOrder' ,     component:preOrder   },
+       { path:'/viewIP',        component:viewIp     },
        { path:'/proEdit' ,      component:proEdit    },
        { path:'/proEdit/:pid' , component:proEdit    },
        { path:'/proDuct' ,      component:proDuct    },
