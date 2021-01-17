@@ -529,15 +529,32 @@ var  viewIp  = Vue.component('viewIp' ,
   template: `<div class="fd120"> 
         <h5><router-link to="/compacc"><i class="fas fa-home">&nbsp;&nbsp;Home</i></router-link> </h5>
         <div class="fd122">
+        <div class="acc20">        
+             <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#viewer" data-toggle="tab">Invoice</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href="#click" data-toggle="tab">Data SET</a>
+                </li>
+             </ul>
+             <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="viewer" >
+                Viewer
+                </div>
+                <div class="tab-pane fade" id="click" >
+                click
+                </div>
+               </div> 
+
+        </div>   <!-- div acc20  -->  
         <div class="tbbg">
-            <div class ="tbtt">This is Title of Table View IP </div>
+            <div class ="tbtt"> IP list for Viewers  </div>
         <table class="gstb">
-        <tr><th>fga1</th><th>fga2</th><th>fga3</th></tr>
-        <tr><td>bb1</td><td>bb2</td><td>bb3</td></tr>
-        <tr><td>cc1</td><td>cc2</td><td>cc3</td></tr>
-        <tr><td>a1</td><td>a2</td><td>a3</td></tr>
-        <tr><td>bb1</td><td>bb2</td><td>bb3</td></tr>
-        <tr><td>cc1</td><td>cc2</td><td>cc3</td></tr>
+        <tr><th>Item</th><th>date</th><th>Customer ID</th><th>Refernce</th><th>Visits</th><th>Time</th><th>IP</th></tr>
+        <tr v-for= "(vall, index ) in prod"><td>{{vall.item}}</td><td>{{vall.date}}</td><td>{{vall.customer_id}}</td>
+        <td>{{vall.reference}}</td><td>{{vall.visits}}</td><td>{{vall.time}}</td><td>{{vall.ip}}</td>
+        </tr>
         </table>
         </div> <!-- div tbbg  -->
         </div>
@@ -555,7 +572,12 @@ var  viewIp  = Vue.component('viewIp' ,
                 }
    },
   mounted: function(){
+    var fln = './src/php/api_db_ip_2021.php?acc_at=viewer&cvcode=108'
       console.log("test View Ip")
+      fetch(fln).then(response => response.json()).then(data => {
+        app.jsdd = data.ips ;
+        console.log(data)
+      }).catch((err) => { console.log(err) })
   }
 })
 /****************************************************************************************************************/

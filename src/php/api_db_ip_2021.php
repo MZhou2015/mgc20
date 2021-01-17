@@ -21,18 +21,18 @@ else
     $ip_address = $_SERVER['REMOTE_ADDR'];
   }
  $ptcode = "E17100" ;
-if($acc == "pritem")  $ptcode = $_GET['pcode'] ;
-$ip_server = $_SERVER['SERVER_ADDR']; 
-/**********      one Product    ***/
-
- $clk =  onetoone_ob("gs_product",$db,"ptcode",$ptcode,"click"); 
- $clk = $clk+1;
- update_onerow("gs_product","click",$clk,"ptcode",$ptcode,$db);   
-// Printing the stored address
-/*********   stroe the viewer ip to database   *****/
-$tdy = date("Y-m-d");
-$tn = date("h:i:sa");
-/*******************   check the user ip times     ***/
+if($acc == "pritem") {
+   $ptcode = $_GET['pcode'] ;
+   $ip_server = $_SERVER['SERVER_ADDR']; 
+   /**********      one Product    ***/
+    $clk =  onetoone_ob("gs_product",$db,"ptcode",$ptcode,"click"); 
+    $clk = $clk+1;
+     update_onerow("gs_product","click",$clk,"ptcode",$ptcode,$db);   
+  // Printing the stored address
+  /*********   stroe the viewer ip to database   *****/
+   $tdy = date("Y-m-d");
+   $tn = date("h:i:sa");
+   /*******************   check the user ip times     ***/
    $query= "SELECT * FROM gs_viewip WHERE ip = '$ip_address' and date = '$tdy' ";
    $r = $db->query($query);
    $rw = 0;
@@ -41,12 +41,22 @@ $tn = date("h:i:sa");
              $rw = $row[0]; 
              $vs = $row['visits'] + 1 ;
                 } 
-    if($rw > 3) update_onerow("gs_viewip","visits",$vs,"item",$rw,$db);
-         else {
+       if($rw > 3) update_onerow("gs_viewip","visits",$vs,"item",$rw,$db);
+            else {
            $qq = "INSERT INTO  gs_viewip (ip,time,date)  VALUES    ('$ip_address','$tn','$tdy')";
            $result   = $db->query($qq) ;   
             }
-  
+    }
+ if($acc == "viewer") {
+      $query= "SELECT * FROM gs_viewip order by date ";
+      $r = $db->query($query);
+         $mtab = array() ;
+      while($row = $r->fetch_assoc()) 
+        {   
+           array_push($mtab, $row)  ;
+              }
+      $res['ips'] = $mtab;
+   }
 /***************************************************/
 /***********************************************/  
    $user = "Gecon Test";
