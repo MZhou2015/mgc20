@@ -48,7 +48,8 @@ if($acc == "pritem") {
             }
     }
  if($acc == "viewer") {
-      $query= "SELECT * FROM gs_viewip order by date ";
+       $dd = '2021-01-10' ;
+      $query= "SELECT * FROM gs_viewip WHERE date > '$dd' order by date ";
       $r = $db->query($query);
          $mtab = array() ;
       while($row = $r->fetch_assoc()) 
@@ -56,6 +57,14 @@ if($acc == "pritem") {
            array_push($mtab, $row)  ;
               }
       $res['ips'] = $mtab;
+      $query= "SELECT * FROM gs_product WHERE remark > 93 order by click desc";
+      $r = $db->query($query);
+         $mtac = array() ;
+      while($row = $r->fetch_assoc()) 
+        {   
+           array_push($mtac, $row)  ;
+              }
+      $res['product'] = $mtac;
    }
 /***************************************************/
 /***********************************************/  

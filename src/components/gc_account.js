@@ -532,33 +532,39 @@ var  viewIp  = Vue.component('viewIp' ,
         <div class="acc20">        
              <ul class="nav nav-tabs">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#viewer" data-toggle="tab">Invoice</a>
+                  <a class="nav-link active" href="#viewer" data-toggle="tab">Viewer IP</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="#click" data-toggle="tab">Data SET</a>
+                   <a class="nav-link" href="#click" data-toggle="tab">Item Click</a>
                 </li>
              </ul>
              <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="viewer" >
-                Viewer
+                 <div class="tbbg">
+                 <div class ="tbtt"> IP list for Viewers  </div>
+                 <table class="gstb">
+                   <tr><th>Item</th><th>date</th><th>Customer ID</th><th>Refernce</th><th>Visits</th><th>Time</th><th>IP</th></tr>
+                   <tr v-for= "(vall, index ) in prod.ips"><td>{{vall.item}}</td><td>{{vall.date}}</td><td>{{vall.customer_id}}</td>
+                        <td>{{vall.reference}}</td><td>{{vall.visits}}</td><td>{{vall.time}}</td><td>{{vall.ip}}</td>
+                    </tr>
+                 </table>
+                 </div> <!-- div tbbg  -->
                 </div>
                 <div class="tab-pane fade" id="click" >
-                click
+                <div class="tbbg">
+                 <div class ="tbtt"> IP list for Viewers  </div>
+                 <table class="gstb">
+                   <tr><th>Item</th><th>PT Code</th><th>Model</th><th>Name</th><th>View Click</th><th>Remark</th><th>Price</th></tr>
+                   <tr v-for= "(vul, index ) in prod.product"><td>{{index+1}}</td><td>{{vul.ptcode}}</td><td>{{vul.model}}</td>
+                        <td>{{vul.name}}</td><td>{{vul.click}}</td><td>{{vul.remark}}</td><td>{{vul.price}}</td>
+                    </tr>
+                 </table>
+                 </div> <!-- div tbbg  -->
                 </div>
                </div> 
 
         </div>   <!-- div acc20  -->  
-        <div class="tbbg">
-            <div class ="tbtt"> IP list for Viewers  </div>
-        <table class="gstb">
-        <tr><th>Item</th><th>date</th><th>Customer ID</th><th>Refernce</th><th>Visits</th><th>Time</th><th>IP</th></tr>
-        <tr v-for= "(vall, index ) in prod"><td>{{vall.item}}</td><td>{{vall.date}}</td><td>{{vall.customer_id}}</td>
-        <td>{{vall.reference}}</td><td>{{vall.visits}}</td><td>{{vall.time}}</td><td>{{vall.ip}}</td>
-        </tr>
-        </table>
-        </div> <!-- div tbbg  -->
         </div>
-        Hello world !
         </div> ` ,
   data() {
       return {  
@@ -575,7 +581,7 @@ var  viewIp  = Vue.component('viewIp' ,
     var fln = './src/php/api_db_ip_2021.php?acc_at=viewer&cvcode=108'
       console.log("test View Ip")
       fetch(fln).then(response => response.json()).then(data => {
-        app.jsdd = data.ips ;
+        app.jsdd = data ;
         console.log(data)
       }).catch((err) => { console.log(err) })
   }
