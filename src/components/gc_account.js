@@ -556,7 +556,7 @@ var  viewIp  = Vue.component('viewIp' ,
                  <table class="gstb">
                    <tr><th>Item</th><th>PT Code</th><th>Model</th><th>Name</th><th>View Click</th><th>Remark</th><th>Price</th></tr>
                    <tr v-for= "(vul, index ) in prod.product"><td>{{index+1}}</td><td>{{vul.ptcode}}</td><td>{{vul.model}}</td>
-                        <td>{{vul.name}}</td><td>{{vul.click}}</td><td>{{vul.remark}}</td><td>{{vul.price}}</td>
+                        <td>{{vul.name}}</td><td>{{vul.click}}</td><td>{{vul.remark}}</td><td>$ {{vul.price}}</td>
                     </tr>
                  </table>
                  </div> <!-- div tbbg  -->
