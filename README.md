@@ -16,6 +16,7 @@ VaultCraft is built for serious DeFi users who want to:
 
 🧠 Manage risk, allocation, and performance through a personalized dashboard
 
+
 🧱 Project Structure
 
 VaultCraft/
