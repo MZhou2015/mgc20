@@ -18,7 +18,7 @@ VaultCraft is built for serious DeFi users who want to:
 
 
 🧱 Project Structure
-
+···
 VaultCraft/
 ├── frontend/              # Vue3 + Tailwind (UI & dashboards)
 │   ├── components/
@@ -39,7 +39,7 @@ VaultCraft/
 │
 ├── scripts/               # Automation tools: harvest, rebalance, etc.
 ├── data/                  # JSON/CSV for historical tracking
-└── README.md
+└── README.md ···
 
 🔑 Core Modules
 
