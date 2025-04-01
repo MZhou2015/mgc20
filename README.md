@@ -52,6 +52,17 @@ VaultCraft/
 ├── scripts/               # Automation tools: harvest, rebalance, etc.
 ├── data/                  # JSON/CSV for historical tracking
 └── README.md
+Frontend Menu
+├── Dashboard         # Overview of total assets, positions, and performance
+├── Vaults            # Details of each yield farming or LP vault
+├── Lending           # Borrowing/lending positions, interest rate tracking
+├── Holdings          # Directional token holdings (e.g., BTC, ETH)
+├── Strategy Builder  # Custom strategy creation & configuration (WIP)
+├── Analytics         # Charts, indicators, backtest summaries
+├── Activity Log      # Transaction and task history (harvests, rebalances)
+└── Settings          # Wallet config, notification rules, preferences
+
+
 🔑 Core Modules
 yield_vault/
 Monitor and track LP positions (APR, TVL, daily rewards)
